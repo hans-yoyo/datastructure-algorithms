@@ -13,7 +13,7 @@
     </modules>
 
     <properties>
-        <!-- 依赖相关配置 -->
+        <!-- 依赖相关配置1 -->
         <spring.boot.version>2.2.4.RELEASE</spring.boot.version>
         <!-- 插件相关配置 -->
         <maven.compiler.target>1.8</maven.compiler.target>
