@@ -29,8 +29,6 @@
 
 package com.leetcode.editor.cn;
 
-import org.junit.Assert;
-
 /*
  * Java：回文数
  */
