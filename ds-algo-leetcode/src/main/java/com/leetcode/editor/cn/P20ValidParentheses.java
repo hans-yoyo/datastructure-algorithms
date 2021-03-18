@@ -42,22 +42,57 @@
 
 
 package com.leetcode.editor.cn;
+
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 /*
  * Java：有效的括号
  */
-public class P20ValidParentheses{
+public class P20ValidParentheses {
     public static void main(String[] args) {
         Solution solution = new P20ValidParentheses().new Solution();
+        System.out.println(solution.isValid("()[]{}"));
         // TO TEST
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isValid(String s) {
+    class Solution {
+        public boolean isValid(String s) {
+            int n = s.length();
+            if ((n & 1) == 1) {
+                return false;
+            }
 
-        return false;
+            // 遇到右括号就判断stack栈顶是否是左括号，并出栈, 如果是左括号就入栈
+            Map<Character, Character> pairs = new HashMap<>(3);
+            {
+                {
+                    pairs.put(')', '(');
+                    pairs.put(']', '[');
+                    pairs.put('}', '{');
+                }
+            }
 
+            Deque<Character> stack = new LinkedList<>();
+            for (int i = 0; i < n; i++) {
+                char ch = s.charAt(i);
+                if (pairs.containsKey(ch)) {
+                    if (stack.isEmpty() || !stack.peek().equals(pairs.get(ch))) {
+                        return false;
+                    }
+                    stack.pop();
+                } else {
+                    stack.push(ch);
+                }
+            }
+
+            return stack.isEmpty();
+
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
